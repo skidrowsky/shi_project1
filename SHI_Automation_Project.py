@@ -36,7 +36,7 @@ if st.button("전송"):
     if user_input and api_key:
         # OpenAI API를 사용하여 응답 생성
         chat_openai = ChatOpenAI(model="gpt-4o-mini", openai_api_key=api_key)
-        response = chat_openai.invoke(messages=[{"role": "user", "content": user_input}])
+        response = chat_openai.chat(messages=[{"role": "user", "content": user_input}])
         st.write("챗봇 응답:", response['content'])
     elif not api_key:
         st.warning("API 키를 입력해 주세요.")
