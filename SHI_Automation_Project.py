@@ -4,9 +4,13 @@ from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
 from langchain_ollama import ChatOllama
 
+
 # 파일 업로드를 위한 Streamlit 인터페이스
 st.title("객체 인식 프로그램")
 st.write("사진이나 PDF 파일을 업로드하세요.")
+
+# OpenAI API 키 입력
+api_key = st.text_input("OpenAI API 키를 입력하세요:", type="password")
 
 # 파일 업로드 위젯
 uploaded_file = st.file_uploader("파일 선택", type=["jpg", "jpeg", "png", "pdf"])
@@ -29,8 +33,10 @@ st.write("챗봇과 대화해보세요.")
 user_input = st.text_input("메시지를 입력하세요:")
 
 if st.button("전송"):
-    if user_input:
+    if user_input and api_key:
         # OpenAI API를 사용하여 응답 생성
-        chat_openai = ChatOpenAI(model="gpt-4o-mini")
+        chat_openai = ChatOpenAI(model="gpt-4o-mini", openai_api_key=api_key)
         response = chat_openai.invoke(messages=[{"role": "user", "content": user_input}])
         st.write("챗봇 응답:", response['content'])
+    elif not api_key:
+        st.warning("API 키를 입력해 주세요.")
