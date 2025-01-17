@@ -14,7 +14,7 @@ uploaded_file = st.file_uploader("파일 선택", type=["jpg", "jpeg", "png", "p
 if uploaded_file is not None:
     # 파일 타입에 따라 처리
     if uploaded_file.type in ["image/jpeg", "image/png"]:
-        st.image(uploaded_file, caption="업로드된 이미지", use_column_width=True)
+        st.image(uploaded_file, caption="업로드된 이미지", use_container_width=True)
         # 이미지 처리 로직 추가
         st.write("이미지 처리 중...")
         # 객체 인식 코드 추가
