@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
-from Langchain_ollama import ChatOllama
+from langchain_ollama import ChatOllama
 
 # 파일 업로드를 위한 Streamlit 인터페이스
 st.title("객체 인식 프로그램")
