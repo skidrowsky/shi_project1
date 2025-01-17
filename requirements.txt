@@ -1,6 +1,6 @@
 openai==1.50.0
 pydantic==2.5.2
-langchain-ollama==0.1.1
+langchain-ollama==0.2.2
 langchain-openai==0.3.0
 streamlit==1.41.1
 python-dotenv==1.0.0
