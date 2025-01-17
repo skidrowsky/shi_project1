@@ -31,8 +31,6 @@ user_input = st.text_input("메시지를 입력하세요:")
 if st.button("전송"):
     if user_input:
         # OpenAI API를 사용하여 응답 생성
-        response = OpenAI.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[{"role": "user", "content": user_input}]
-        )
-        st.write("챗봇 응답:", response['choices'][0]['message']['content'])
+        chat_openai = ChatOpenAI(model="gpt-4o-mini")
+        response = chat_openai.invoke(messages=[{"role": "user", "content": user_input}])
+        st.write("챗봇 응답:", response['content'])
